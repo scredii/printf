@@ -6,7 +6,7 @@
 /*   By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 18:06:56 by abourgeu          #+#    #+#             */
-/*   Updated: 2017/02/06 16:51:32 by abourgeu         ###   ########.fr       */
+/*   Updated: 2017/02/08 11:33:05 by abourgeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void		ft_check_convers(va_list args, char *str)
 	char *tmp;
 
 	tmp = ft_strnew(ft_strlen(str) * g_sarg.width);
-	if (!(g_sarg.printstr = (char *)malloc(sizeof(char) * 1000)))
+	if (!(g_sarg.s = (char *)malloc(sizeof(char) * 1000)))
 		return ;
 	if (g_sarg.convers == 's' || g_sarg.convers == 'S' || g_sarg.convers == 'p')
 	{
@@ -33,26 +33,27 @@ void		ft_check_convers(va_list args, char *str)
 		ft_convert_u(args);
 	if (g_sarg.convers == 'c' || g_sarg.convers == 'C')
 		ft_convert_c(tmp, args, str);
+	free(tmp);
 }
 
 void		ft_resolve_str(char *str)
 {
 	char	*tmp;
 
-
 	tmp = ft_strnew(ft_strlen(str) * g_sarg.width);
 	if (ft_strchr(g_sarg.option, '-') != NULL)
 	{
-		if ((size_t)g_sarg.width > ft_strlen(g_sarg.printstr))
-			tmp = ft_memset(tmp, ' ', (g_sarg.width - ft_strlen(g_sarg.printstr)));
-		g_sarg.printstr = ft_strjoin(g_sarg.printstr, tmp);
+		if ((size_t)g_sarg.width > ft_strlen(g_sarg.s))
+			tmp = ft_memset(tmp, ' ', (g_sarg.width - ft_strlen(g_sarg.s)));
+		g_sarg.s = ft_strjoin(g_sarg.s, tmp);
 	}
 	if (ft_strchr(g_sarg.option, '-') == NULL && g_sarg.width > 0)
 	{
-		tmp = ft_memset(tmp, ' ', (g_sarg.width - ft_strlen(g_sarg.printstr)));
-		g_sarg.printstr = ft_strjoin(tmp, g_sarg.printstr);
-		free(tmp);
+		tmp = ft_memset(tmp, ' ', (g_sarg.width - ft_strlen(g_sarg.s)));
+		g_sarg.s = ft_strjoin(tmp, g_sarg.s);
 	}
+	if (tmp)
+		free(tmp);
 }
 
 void		ft_len_form(char *str, int i)

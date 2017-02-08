@@ -6,7 +6,7 @@
 /*   By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/20 16:34:32 by abourgeu          #+#    #+#             */
-/*   Updated: 2017/02/06 17:22:21 by abourgeu         ###   ########.fr       */
+/*   Updated: 2017/02/07 14:13:22 by abourgeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,30 +17,29 @@ void ft_resolve_width(void)
 {
 	char *tmp2;
 
-	tmp2 = ft_strnew(1000);
-	if (g_sarg.width > g_sarg.precision)
+	tmp2 = ft_strnew(ft_strlen(g_sarg.s) + g_sarg.width);
+	if (g_sarg.width > g_sarg.prec)
 	{
 		if (ft_strchr(g_sarg.option, '-') == NULL &&
-			g_sarg.width > ft_strlen(g_sarg.printstr) && ft_strlen(g_sarg.printstr) == 0)
+			g_sarg.width > ft_strlen(g_sarg.s) && ft_strlen(g_sarg.s) == 0)
 		{
 			tmp2 = ft_memset(tmp2, ' ', g_sarg.width);
-			g_sarg.printstr = ft_strjoin(tmp2, g_sarg.printstr);
-			return ;
+			g_sarg.s = ft_strjoin(tmp2, g_sarg.s);
 		}
 		if (ft_strchr(g_sarg.option, '-') == NULL &&
-			g_sarg.width > ft_strlen(g_sarg.printstr))
+			g_sarg.width > ft_strlen(g_sarg.s))
 		{
-			tmp2 = ft_memset(tmp2, ' ', (g_sarg.width - ft_strlen(g_sarg.printstr)));
-			g_sarg.printstr = ft_strjoin(tmp2, g_sarg.printstr);
-			return ;
+			tmp2 = ft_memset(tmp2, ' ', (g_sarg.width - ft_strlen(g_sarg.s)));
+			g_sarg.s = ft_strjoin(tmp2, g_sarg.s);
 		}
 		if (ft_strchr(g_sarg.option, '-') != NULL &&
-			g_sarg.width > ft_strlen(g_sarg.printstr))
+			g_sarg.width > ft_strlen(g_sarg.s))
 		{
-			tmp2 = ft_memset(tmp2, ' ', (g_sarg.width - ft_strlen(g_sarg.printstr)));
-			g_sarg.printstr = ft_strjoin(g_sarg.printstr, tmp2);
+			tmp2 = ft_memset(tmp2, ' ', (g_sarg.width - ft_strlen(g_sarg.s)));
+			g_sarg.s = ft_strjoin(g_sarg.s, tmp2);
 		}
 	}
+	free(tmp2);
 }
 
 void ft_resolve_width_octal(char *tmp)
@@ -48,23 +47,23 @@ void ft_resolve_width_octal(char *tmp)
 	if (g_sarg.convers == 'o' && ft_strchr(g_sarg.option, '0') != NULL &&
 		ft_strchr(g_sarg.option, '-') == NULL)
 	{
-		tmp = ft_memset(tmp, '0', g_sarg.width - ft_strlen(g_sarg.printstr));
-		g_sarg.printstr = ft_strjoin(tmp, g_sarg.printstr);
+		tmp = ft_memset(tmp, '0', g_sarg.width - ft_strlen(g_sarg.s));
+		g_sarg.s = ft_strjoin(tmp, g_sarg.s);
 	}
 	if (g_sarg.convers == 'o' && ft_strchr(g_sarg.option, '#') != NULL &&
-		g_sarg.printstr[0] != '0')
+		g_sarg.s[0] != '0')
 	{
-		g_sarg.printstr = ft_strjoin("0", g_sarg.printstr);
+		g_sarg.s = ft_strjoin("0", g_sarg.s);
 	}
 }
 
 void ft_resolve_oneperc(char *str)
 {
-	g_sarg.printstr = "%";
+	g_sarg.s = "%";
 	ft_resolve_str(str);
 	ft_resolve_width();
-	g_sarg.val_ret = ft_strlen(g_sarg.printstr);
-	ft_putstr(g_sarg.printstr);
+	g_sarg.val_ret = ft_strlen(g_sarg.s);
+	ft_putstr(g_sarg.s);
 }
 
 void ft_ret_value()

@@ -6,7 +6,7 @@
 /*   By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/28 16:04:55 by abourgeu          #+#    #+#             */
-/*   Updated: 2017/02/06 18:03:43 by abourgeu         ###   ########.fr       */
+/*   Updated: 2017/02/08 11:34:09 by abourgeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int		ft_parse_params(char *str, va_list args)
 {
 	int		i;
 	int		j;
+	int		ret;
 
-	if (!(g_sarg.print = ft_strnew(1000)))
-		return (-1);
+	g_sarg.print = ft_strnew(1000);
 	j = 0;
 	i = -1;
 	while (str[++i])
@@ -49,14 +49,13 @@ int		ft_parse_params(char *str, va_list args)
 			}
 			ft_check_convers(args, str);
 			if (ft_strlen(g_sarg.print) > 0 || str[i + 1] != '\0')
-			{
-				g_sarg.print = ft_strjoin(g_sarg.print, g_sarg.printstr);
-			}
-			if (g_sarg.precision == 0 && g_sarg.ret == 1 && ft_strchr(CONVERS, str[i + 1]) != NULL)
-				j++;
-			j += ft_strlen(g_sarg.printstr);
+				g_sarg.print = ft_strjoin(g_sarg.print, g_sarg.s);
+			if (g_sarg.prec == 0 && g_sarg.ret == 1 &&
+					ft_strchr(CONVERS, str[i + 1]) != NULL)
+				j += 1;
+			j += ft_strlen(g_sarg.s);
 			g_sarg.len_form = 0;
-			g_sarg.val_ret = g_sarg.val_ret + ft_strlen(g_sarg.printstr);
+			g_sarg.val_ret = g_sarg.val_ret + ft_strlen(g_sarg.s);
 		}
 		else
 		{
@@ -65,23 +64,32 @@ int		ft_parse_params(char *str, va_list args)
 			j++;
 		}
 	}
+
+	ret = ft_put_printf();
+	return (0 + ret);
+}
+
+int		ft_put_printf(void)
+{
 	if (ft_strlen(g_sarg.print) > 0)
 	{
-		if ((g_sarg.convers == 'c' && g_sarg.printstr[0] == '\0'))
+		if ((g_sarg.convers == 'c' && g_sarg.s[0] == '\0'))
 			g_sarg.val_ret += 1;
- 		ft_putstr(g_sarg.print);
+		ft_putstr(g_sarg.print);
+		// ft_strdel(&g_sarg.print);
 		return (1);
 	}
-	if (g_sarg.printstr[0] == '\0' && ft_strlen(g_sarg.print) <= 0 && g_sarg.convers != 'c')
+	if (g_sarg.s[0] == '\0' && ft_strlen(g_sarg.print) <= 0 &&
+			g_sarg.convers != 'c')
 	{
 		ft_ret_value();
 		ft_putnbr(g_sarg.decimal);
 		return (0);
 	}
 	else
-		ft_putstr(g_sarg.printstr);
+		ft_putstr(g_sarg.s);
 	return (0);
- }
+}
 
 int		ft_parse_printf(char *str)
 {
