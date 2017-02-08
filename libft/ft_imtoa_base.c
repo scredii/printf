@@ -6,13 +6,13 @@
 /*   By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 16:36:46 by abourgeu          #+#    #+#             */
-/*   Updated: 2017/01/24 16:47:41 by abourgeu         ###   ########.fr       */
+/*   Updated: 2017/02/08 17:13:15 by abourgeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static  uintmax_t	conv_ex(uintmax_t nb)
+static	uintmax_t	conv_ex(uintmax_t nb)
 {
 	if (nb >= 10)
 		return (nb - 10 + 'a');
@@ -22,7 +22,7 @@ static  uintmax_t	conv_ex(uintmax_t nb)
 
 char				*ft_imtoa_base(uintmax_t value, uintmax_t base)
 {
-	int		i;
+	int				i;
 	char			*str;
 	uintmax_t		tmp;
 

@@ -6,7 +6,7 @@
 /*   By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/28 16:05:18 by abourgeu          #+#    #+#             */
-/*   Updated: 2017/02/08 11:34:26 by abourgeu         ###   ########.fr       */
+/*   Updated: 2017/02/08 17:11:42 by abourgeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,17 @@ int					convert_format_2(va_list args);
 void				ft_convert_o(va_list args);
 void				ft_parsing(char *str, int i);
 int					ft_get_option(char *str, int i);
-void 				ft_convert_c(char *tmp, va_list args, char *str);
-void 				ft_job_for_x(va_list args, char *tmp);
-void 				ft_resolve_width_x(char *tmp);
-void 				ft_convert_length_x(va_list args);
-void 				ft_resolve_oneperc(char *str);
-void 				ft_ret_value();
+void				ft_convert_c(char *tmp, va_list args, char *str);
+void				ft_job_for_x(va_list args, char *tmp);
+void				ft_resolve_width_x(char *tmp);
+void				ft_convert_length_x(va_list args);
+void				ft_resolve_oneperc(char *str);
+void				ft_ret_value();
 void				ft_delete_neg();
-void 				ft_resolve_width_octal(char *tmp);
-void 				ft_resolve_width(void);
-void 				ft_convert_char(va_list args);
-void 				ft_convert_format_x(va_list args);
+void				ft_resolve_width_octal(char *tmp);
+void				ft_resolve_width(void);
+void				ft_convert_char(va_list args);
+void				ft_convert_format_x(va_list args);
 void				ft_resolve_dec(void);
 int					ft_parse_params(char *str, va_list args);
 int					ft_parse_width(char *str, int i);
@@ -75,7 +75,7 @@ void				ft_len_form(char *str, int i);
 void				ft_double_percent(char *str, int i);
 void				ft_convert_hexa(void);
 void				ft_convert_d(va_list args);
-int 				ft_convert_format(va_list args);
-void 				ft_convert_u(va_list args);
+int					ft_convert_format(va_list args);
+void				ft_convert_u(va_list args);
 
 #endif

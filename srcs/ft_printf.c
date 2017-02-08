@@ -6,14 +6,14 @@
 /*   By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/28 16:04:55 by abourgeu          #+#    #+#             */
-/*   Updated: 2017/02/08 11:34:09 by abourgeu         ###   ########.fr       */
+/*   Updated: 2017/02/08 17:20:09 by abourgeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 #include <stdio.h>
 
-void	ft_parsing(char *str, int i)
+void		ft_parsing(char *str, int i)
 {
 	ft_get_option(str, i);
 	ft_parse_width(str, i);
@@ -22,7 +22,7 @@ void	ft_parsing(char *str, int i)
 	ft_parse_convers(str, i);
 }
 
-int		ft_parse_params(char *str, va_list args)
+int			ft_parse_params(char *str, va_list args)
 {
 	int		i;
 	int		j;
@@ -31,17 +31,17 @@ int		ft_parse_params(char *str, va_list args)
 	g_sarg.print = ft_strnew(1000);
 	j = 0;
 	i = -1;
-	while (str[++i])
+	while (str[++i] && str)
 	{
 		if (str[i] == '%')
 		{
 			i += 1;
 			ft_parsing(str, i);
 			if (g_sarg.convers == '%')
-				{
-					ft_resolve_oneperc(str);
-					return (1);
-				}
+			{
+				ft_resolve_oneperc(str);
+				return (1);
+			}
 			if (ft_strchr(CONVERS, str[i]) == NULL)
 			{
 				ft_len_form(str, i);
@@ -64,19 +64,17 @@ int		ft_parse_params(char *str, va_list args)
 			j++;
 		}
 	}
-
 	ret = ft_put_printf();
 	return (0 + ret);
 }
 
-int		ft_put_printf(void)
+int			ft_put_printf(void)
 {
 	if (ft_strlen(g_sarg.print) > 0)
 	{
 		if ((g_sarg.convers == 'c' && g_sarg.s[0] == '\0'))
 			g_sarg.val_ret += 1;
 		ft_putstr(g_sarg.print);
-		// ft_strdel(&g_sarg.print);
 		return (1);
 	}
 	if (g_sarg.s[0] == '\0' && ft_strlen(g_sarg.print) <= 0 &&
@@ -91,7 +89,7 @@ int		ft_put_printf(void)
 	return (0);
 }
 
-int		ft_parse_printf(char *str)
+int			ft_parse_printf(char *str)
 {
 	int		i;
 
@@ -118,9 +116,9 @@ int		ft_parse_printf(char *str)
 	return (1);
 }
 
-int		ft_printf(const char *str, ...)
+int			ft_printf(const char *str, ...)
 {
-	va_list args;
+	va_list	args;
 	int		ret;
 
 	va_start(args, str);

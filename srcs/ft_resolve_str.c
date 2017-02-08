@@ -6,7 +6,7 @@
 /*   By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 18:06:56 by abourgeu          #+#    #+#             */
-/*   Updated: 2017/02/08 11:33:05 by abourgeu         ###   ########.fr       */
+/*   Updated: 2017/02/08 17:17:46 by abourgeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void		ft_check_convers(va_list args, char *str)
 	}
 	if (g_sarg.convers == 'd' || g_sarg.convers == 'o')
 		ft_convert_d(args);
-	if ( g_sarg.convers == 'x' || g_sarg.convers == 'X')
+	if (g_sarg.convers == 'x' || g_sarg.convers == 'X')
 		ft_job_for_x(args, tmp);
 	if (g_sarg.convers == 'u' || g_sarg.convers == 'U')
 		ft_convert_u(args);

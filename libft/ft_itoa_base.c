@@ -6,7 +6,7 @@
 /*   By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 15:49:43 by abourgeu          #+#    #+#             */
-/*   Updated: 2017/01/23 12:12:06 by abourgeu         ###   ########.fr       */
+/*   Updated: 2017/02/08 17:13:51 by abourgeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ char			*ft_itoa_base(intmax_t value, int base)
 	int			tmp;
 
 	i = 0;
-
 	tmp = value;
 	while (tmp >= base)
 	{

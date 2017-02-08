@@ -6,7 +6,7 @@
 /*   By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 17:56:09 by abourgeu          #+#    #+#             */
-/*   Updated: 2017/02/08 11:33:44 by abourgeu         ###   ########.fr       */
+/*   Updated: 2017/02/08 17:17:04 by abourgeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int			ft_parse_width(char *str, int i)
 	return (0);
 }
 
-int		ft_get_option(char *str, int i)
+int			ft_get_option(char *str, int i)
 {
 	int		j;
 

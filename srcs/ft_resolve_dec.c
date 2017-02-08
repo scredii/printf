@@ -6,7 +6,7 @@
 /*   By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/12 19:12:18 by abourgeu          #+#    #+#             */
-/*   Updated: 2017/02/07 13:23:27 by abourgeu         ###   ########.fr       */
+/*   Updated: 2017/02/08 17:20:54 by abourgeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void		ft_resolve_zero(char *tmp)
 		g_sarg.s = ft_strjoin(tmp, g_sarg.s);
 		if (g_sarg.width != 0)
 			ft_resolve_width();
-		return;
+		return ;
 	}
 	if (ft_strchr(g_sarg.option, '+') != NULL && ft_strchr(g_sarg.option, '0') != NULL)
 	{
@@ -40,7 +40,7 @@ void		ft_resolve_zero(char *tmp)
 	g_sarg.s = ft_strjoin(tmp, g_sarg.s);
 }
 
-void			ft_resolve_dec(void)
+void		ft_resolve_dec(void)
 {
 	char	*tmp;
 

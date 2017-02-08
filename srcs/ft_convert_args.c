@@ -6,7 +6,7 @@
 /*   By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/20 16:15:16 by abourgeu          #+#    #+#             */
-/*   Updated: 2017/02/08 11:27:39 by abourgeu         ###   ########.fr       */
+/*   Updated: 2017/02/08 17:14:21 by abourgeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,5 +124,4 @@ void		ft_delete_neg(void)
 	tmp[i] = '\0';
 	tmp = ft_strjoin("-", tmp);
 	g_sarg.s = tmp;
-	//free(tmp);
 }

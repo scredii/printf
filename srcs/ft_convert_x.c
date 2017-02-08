@@ -6,13 +6,14 @@
 /*   By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 18:59:57 by abourgeu          #+#    #+#             */
-/*   Updated: 2017/02/07 12:26:14 by abourgeu         ###   ########.fr       */
+/*   Updated: 2017/02/08 17:16:21 by abourgeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 #include <stdio.h>
-void 		ft_job_for_x(va_list args, char *tmp)
+
+void		ft_job_for_x(va_list args, char *tmp)
 {
 	ft_convert_format_x(args);
 	ft_resolve_width_x(tmp);
@@ -21,7 +22,7 @@ void 		ft_job_for_x(va_list args, char *tmp)
 	ft_resolve_dec();
 }
 
-void 		ft_convert_format_x(va_list args)
+void		ft_convert_format_x(va_list args)
 {
 	int tmp;
 
@@ -30,33 +31,33 @@ void 		ft_convert_format_x(va_list args)
 		ft_convert_length_x(args);
 	else
 	{
-		tmp = va_arg(args,long long);
+		tmp = va_arg(args, long long);
 		if (tmp == 0)
-			return;
+			return ;
 		g_sarg.decimal = tmp;
 		g_sarg.s = ft_lltoa_base((unsigned int)g_sarg.decimal, 16);
 	}
 }
 
-void 		ft_convert_length_x(va_list args)
+void		ft_convert_length_x(va_list args)
 {
 	if (ft_strchr(&g_sarg.length[0], 'l') != NULL &&
 		ft_strchr(&g_sarg.length[1], 'l') != NULL)
 	{
 		g_sarg.decimal = va_arg(args, long long);
 		g_sarg.s = ft_lltoa_base(g_sarg.decimal, 16);
-		return;
+		return ;
 	}
 	if (ft_strchr(g_sarg.length, 'l') != NULL)
 	{
 		g_sarg.decimal = va_arg(args, long);
 		g_sarg.s = ft_ltoa_base(g_sarg.decimal, 16);
-		return;
+		return ;
 	}
 	if (ft_strchr(g_sarg.length, 'h') != NULL)
 	{
 		g_sarg.decimal = va_arg(args, int);
-		return;
+		return ;
 	}
 	if (ft_strchr(g_sarg.length, 'j') != NULL)
 	{
@@ -65,7 +66,7 @@ void 		ft_convert_length_x(va_list args)
 	}
 }
 
-void 		ft_resolve_width_x(char *tmp)
+void		ft_resolve_width_x(char *tmp)
 {
 	if (ft_strchr(g_sarg.option, '0') != NULL &&
 			ft_strchr(g_sarg.option, '-') == NULL)
@@ -93,7 +94,7 @@ void		ft_convert_hexa(void)
 			if (ft_isdigit(g_sarg.s[i]) == 0)
 				g_sarg.s[i] = ft_tolower(g_sarg.s[i]);
 		if (ft_strchr(g_sarg.option, '#') != NULL && g_sarg.s[1] != 'x')
-			g_sarg.s = ft_strjoin("0x", g_sarg.s );
+			g_sarg.s = ft_strjoin("0x", g_sarg.s);
 	}
 	if (g_sarg.convers == 'X')
 	{
