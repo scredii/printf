@@ -20,7 +20,9 @@ void		ft_check_convers(va_list args, char *str)
 	tmp = ft_strnew(ft_strlen(str) * g_sarg.width);
 	if (!(g_sarg.s = (char *)malloc(sizeof(char) * 1000)))
 		return ;
-	if (g_sarg.convers == 's' || g_sarg.convers == 'S' || g_sarg.convers == 'p')
+	if (g_sarg.convers == 'p')
+		ft_convert_p(args);
+	if (g_sarg.convers == 's' /*|| g_sarg.convers == 'S' || g_sarg.convers == 'p'*/)
 	{
 		ft_convert_char(args);
 		ft_resolve_str(str);
@@ -34,6 +36,11 @@ void		ft_check_convers(va_list args, char *str)
 	if (g_sarg.convers == 'c' || g_sarg.convers == 'C')
 		ft_convert_c(tmp, args, str);
 	free(tmp);
+}
+
+void 		ft_convert_p(va_list args)
+{
+	g_sarg.s = ft_itoa_base(va_arg(args, long), 16);
 }
 
 void		ft_resolve_str(char *str)

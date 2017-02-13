@@ -43,6 +43,7 @@ typedef struct		s_args
 
 t_args				g_sarg;
 
+void 				ft_convert_p(va_list args);
 int					ft_put_printf(void);
 void				ft_resolve_zero(char *tmp);
 void				ft_resolve_dec2(char *tmp);

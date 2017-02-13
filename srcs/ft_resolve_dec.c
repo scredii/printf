@@ -23,7 +23,8 @@ void		ft_resolve_zero(char *tmp)
 			ft_resolve_width();
 		return ;
 	}
-	if (ft_strchr(g_sarg.option, '+') != NULL && ft_strchr(g_sarg.option, '0') != NULL)
+	if (ft_strchr(g_sarg.option, '+') != NULL &&
+			ft_strchr(g_sarg.option, '0') != NULL)
 	{
 		tmp = ft_memset(tmp, '0', g_sarg.width - ft_strlen(g_sarg.s) - 1);
 		g_sarg.s = ft_strjoin(tmp, g_sarg.s);
