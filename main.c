@@ -2,10 +2,12 @@
 #include "locale.h"
 #include <limits.h>
 #include <signal.h>
-
+#include <stdio.h>
 int		main(void)
 {
-	setlocale(LC_ALL, "");
+	ft_printf("len:%d\n", ft_printf("%s is a string", "this"));
+	//printf("len:%d", printf("%s is a string", "this"));
+	/*setlocale(LC_ALL, "");
 	ft_printf("FAKE = '%0.0d'\n", -42);
 	printf("REAL = '%0.0d'\n", -42);
 	ft_printf("FAKE = '%0d'\n", -42);
@@ -666,6 +668,6 @@ int		main(void)
 	 ft_printf("FAKE = '%0.0s'\n","abourgay");
 	 printf("REAL = '%0.0s'\n","abourgay");
 	 ft_printf("FAKE = '%#.20s'\n","abourgay");
-	 printf("REAL = '%#.20s'\n","abourgay");
+	 printf("REAL = '%#.20s'\n","abourgay");*/
 	return (0);
 }

@@ -63,6 +63,7 @@ int			ft_parse_params(char *str, va_list args)
 			g_sarg.val_ret++;
 			j++;
 		}
+		g_sarg.print[j] = '\0';
 	}
 	ret = ft_put_printf();
 	return (0 + ret);
@@ -125,6 +126,8 @@ int			ft_printf(const char *str, ...)
 	ret = ft_parse_printf((char*)str);
 	if (ret == 0)
 		ft_parse_params((char*)str, args);
+	// free(g_sarg.s);
+	// ft_bzero(g_sarg.s, ft_strlen(g_sarg.s));
 	va_end(args);
 	return (g_sarg.val_ret);
 }
