@@ -31,7 +31,6 @@ OBJ = $(SRC:.c=.o)
 $(NAME): $(OBJ)
 	make --no-print-directory -C ./libft
 	@ar rc $(NAME) $(OBJ)
-
 	@echo "Libft compiled."
 
 all: $(NAME)
@@ -46,4 +45,4 @@ fclean : clean
 
 re: fclean all
 
-.PHONY: all clean re
+.PHONY: clean re
