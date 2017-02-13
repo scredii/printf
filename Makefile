@@ -37,11 +37,11 @@ $(NAME): $(OBJ)
 all: $(NAME)
 
 clean:
-	make -C ./libft clean
+	make --no-print-directory -C ./libft clean
 	rm -rf $(OBJ)
 
 fclean : clean
-	make -C ./libft fclean
+	make --no-print-directory -C ./libft fclean
 	rm -rf $(NAME)
 
 re: fclean all
