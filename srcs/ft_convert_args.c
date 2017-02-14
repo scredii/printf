@@ -30,7 +30,6 @@ void		ft_convert_c(char *tmp, va_list args, char *str)
 			tmp2 = ft_strnew(g_sarg.width + ft_strlen(g_sarg.s));
 			tmp2 = ft_memset(tmp2, ' ', g_sarg.width - g_sarg.val_ret);
 			g_sarg.s = ft_strjoin(tmp2, g_sarg.s);
-
 			free(tmp2);
 		}
 		return ;
@@ -108,7 +107,7 @@ void		ft_delete_neg(void)
 	int		j;
 	char	*tmp;
 
-	tmp = ft_strnew(ft_strlen(g_sarg.s) + g_sarg.width);
+	tmp = ft_strnew(1);
 	j = 0;
 	i = 0;
 	while (g_sarg.s[i])

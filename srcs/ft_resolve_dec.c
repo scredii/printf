@@ -18,7 +18,7 @@ void		ft_resolve_zero(char *tmp)
 	if (g_sarg.prec > 0 && g_sarg.ret == 1)
 	{
 		tmp = ft_memset(tmp, '0', g_sarg.width - g_sarg.prec);
-		g_sarg.s = ft_strjoin(tmp, g_sarg.s);
+		g_sarg.s = ft_strjoinfree(tmp, g_sarg.s, 0, 1);
 		if (g_sarg.width != 0)
 			ft_resolve_width();
 		return ;
@@ -27,18 +27,18 @@ void		ft_resolve_zero(char *tmp)
 			ft_strchr(g_sarg.option, '0') != NULL)
 	{
 		tmp = ft_memset(tmp, '0', g_sarg.width - ft_strlen(g_sarg.s) - 1);
-		g_sarg.s = ft_strjoin(tmp, g_sarg.s);
+		g_sarg.s = ft_strjoinfree(tmp, g_sarg.s, 0, 1);
 		if (ft_strchr(g_sarg.option, '+') != NULL &&
 			ft_strchr(g_sarg.s, '-') == NULL && g_sarg.convers != 'u')
 		{
 			tmp = "+";
-			g_sarg.s = ft_strjoin(tmp, g_sarg.s);
+			g_sarg.s = ft_strjoinfree(tmp, g_sarg.s, 0, 1);
 			return ;
 		}
 	}
 	else
 		tmp = ft_memset(tmp, '0', g_sarg.width - ft_strlen(g_sarg.s));
-	g_sarg.s = ft_strjoin(tmp, g_sarg.s);
+	g_sarg.s = ft_strjoinfree(tmp, g_sarg.s, 0, 1);
 }
 
 void		ft_resolve_dec(void)
@@ -50,7 +50,7 @@ void		ft_resolve_dec(void)
 			ft_strchr(g_sarg.option, '0') != NULL)
 	{
 		tmp = ft_memset(tmp, '0', g_sarg.width - ft_strlen(g_sarg.s));
-		g_sarg.s = ft_strjoin(tmp, g_sarg.s);
+		g_sarg.s = ft_strjoinfree(tmp, g_sarg.s, 0, 1);
 	}
 	if (g_sarg.width > 0 && ft_strchr(g_sarg.option, '0') != NULL
 		&& g_sarg.convers == 'd' && ft_strchr(g_sarg.option, '-') == NULL)
@@ -67,19 +67,19 @@ void		ft_resolve_dec2(char *tmp)
 			tmp = ft_memset(tmp, '0', g_sarg.prec - ft_strlen(g_sarg.s));
 		else
 			tmp = ft_memset(tmp, '0', g_sarg.prec - ft_strlen(g_sarg.s) + 1);
-		g_sarg.s = ft_strjoin(tmp, g_sarg.s);
+		g_sarg.s = ft_strjoinfree(tmp, g_sarg.s, 0, 1);
 	}
 	if (ft_strchr(g_sarg.option, ' ') != NULL && g_sarg.convers == 'd'
 		&& ft_strchr(g_sarg.option, '-') == NULL &&
 		ft_strchr(g_sarg.option, '+') == NULL && g_sarg.s[0] != '-')
-		g_sarg.s = ft_strjoin(" ", g_sarg.s);
+		g_sarg.s = ft_strjoinfree(" ", g_sarg.s, 0, 1);
 	if (g_sarg.convers == 'o')
 		ft_resolve_width_octal(tmp);
 	if (ft_strchr(g_sarg.option, '+') != NULL && g_sarg.s[0] != '+' &&
 		ft_strchr(g_sarg.s, '-') == NULL && g_sarg.convers != 'u')
 	{
 		tmp = "+";
-		g_sarg.s = ft_strjoin(tmp, g_sarg.s);
+		g_sarg.s = ft_strjoinfree(tmp, g_sarg.s, 0, 1);
 	}
 	if (g_sarg.width != 0)
 		ft_resolve_width();

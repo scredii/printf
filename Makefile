@@ -24,7 +24,8 @@ SRC = 	srcs/ft_printf.c srcs/ft_parse_printf.c srcs/ft_resolve_str.c		\
 		srcs/ft_convert_long.c libft/ft_ltoa_base.c libft/ft_lltoa.c		\
 		libft/ft_ltoa.c libft/ft_lltoa_base.c libft/ft_imtoa_base.c			\
 		srcs/ft_convert_args.c srcs/ft_resolve_width.c libft/ft_putnbr.c	\
-		srcs/ft_convert_x.c libft/ft_strdel.c\
+		srcs/ft_convert_x.c libft/ft_strdel.c libft/ft_strjoinfree.c		\
+		libft/ft_strcat.c libft/ft_strcpy.c\
 
 OBJ = $(SRC:.c=.o)
 

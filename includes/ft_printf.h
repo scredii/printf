@@ -29,7 +29,7 @@ typedef struct		s_args
 {
 	size_t		prec;
 	size_t		width;
-	char		length[100];
+	char		length[1000];
 	char		option[50];
 	char		convers;
 	int			ret;

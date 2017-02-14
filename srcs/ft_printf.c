@@ -49,16 +49,19 @@ int			ft_parse_params(char *str, va_list args)
 			}
 			ft_check_convers(args, str);
 			if (ft_strlen(g_sarg.print) > 0 || str[i + 1] != '\0')
-				g_sarg.print = ft_strjoin(g_sarg.print, g_sarg.s);
+				g_sarg.print = ft_strjoinfree(g_sarg.print, g_sarg.s, 1, 0);
 			if (g_sarg.prec == 0 && g_sarg.ret == 1 &&
 					ft_strchr(CONVERS, str[i + 1]) != NULL)
 				j += 1;
 			j += ft_strlen(g_sarg.s);
+			// printf("s:%s\n",g_sarg.s);
+			// printf("p:%s\n",g_sarg.print);
 			g_sarg.len_form = 0;
 			g_sarg.val_ret = g_sarg.val_ret + ft_strlen(g_sarg.s);
 		}
 		else
 		{
+			// printf("c:%c\n",g_sarg.print[j]);
 			g_sarg.print[j] = str[i];
 			g_sarg.val_ret++;
 			j++;
@@ -108,6 +111,8 @@ int			ft_parse_printf(char *str)
 		{
 			ft_putstr(str);
 			g_sarg.val_ret = ft_strlen(str);
+			// if (str[0] == '\n' && g_sarg.convers == 0)
+			// 	g_sarg.val_ret = 0;
 			return (1);
 		}
 		if (str[i] == '%' && str[i + 1] == '\0')

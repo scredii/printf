@@ -24,7 +24,7 @@ char				*ft_lltoa_base(long long value, int base);
 char				*ft_ltoa_base(long int value, int base);
 char				*ft_itoa_base(intmax_t n, int base);
 void				ft_putnstr(char const *str, size_t len);
-char				*ft_strjoinfree(char const *s1, char const *s2);
+char				*ft_strjoinfree(char *s1, char *s2, int free1, int free2);
 char				*ft_subfree(char const *s, unsigned int st, size_t len);
 char				*ft_strdup_free(const char *s1);
 char				*ft_strndup(const char *s1, int start, int end);

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strjoinfree.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abourgeu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char	*ft_strjoinfree(char const *s1, char const *s2)
+char	*ft_strjoinfree(char *s1, char *s2, int free1, int free2)
 {
 	char	*str;
 
@@ -22,7 +22,9 @@ char	*ft_strjoinfree(char const *s1, char const *s2)
 		return (NULL);
 	str = ft_strcpy(str, s1);
 	str = ft_strcat(str, s2);
-	free((char*)s1);
-	s1 = NULL;
+	if (free1)
+		free((char*)s1);
+	if (free2)
+		free((char*)s2);
 	return (str);
 }
