@@ -100,7 +100,7 @@ int			ft_parse_printf(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == '%' && str[i + 1] != '%')
+		if (str[i] == '%' && str[i + 1] != '%' && str[i + 1] != '\0')
 			return (0);
 		if (str[i] == '%' && str[i + 1] == '%')
 		{

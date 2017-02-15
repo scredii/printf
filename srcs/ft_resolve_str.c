@@ -18,8 +18,7 @@ void		ft_check_convers(va_list args, char *str)
 	char *tmp;
 
 	tmp = ft_strnew(ft_strlen(str) * g_sarg.width);
-	if (!(g_sarg.s = (char *)malloc(sizeof(char) * 1000)))
-		return ;
+	g_sarg.s = ft_strnew(1);
 	if (g_sarg.convers == 'p')
 		ft_convert_p(args);
 	if (g_sarg.convers == 's' /*|| g_sarg.convers == 'S' || g_sarg.convers == 'p'*/)
