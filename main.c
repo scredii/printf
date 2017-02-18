@@ -44,8 +44,8 @@ int		main(void)
 // 	ft_printf("%4.8d\n", 424242424);
 // 	printf("%4.8d\n", 424242424);
 // // ft_printf("\n-----------------------------\n");
-	ft_printf("%4.15d\n", -42);
-	printf("%4.15d\n", -42);
+	// ft_printf("%4.15d\n", -42);
+	// printf("%4.15d\n", -42);
 // // ft_printf("\n-----------------------------\n");
 // 	ft_printf("%4.15d\n", -424242);
 // 	printf("%4.15d\n", -424242);
@@ -124,7 +124,7 @@ int		main(void)
 	//ft_printf("111%s333%s555", "222", "444");
 	//ft_printf("111%s333%s555%saaa%sccc",
 	//	"222", "444", "666", "bbb");
-	//ft_printf("%s%s%s%s%s", "1", "2", "3", "4", "5");
+//ft_printf("111%s333%s555%saaa%sccc", "222", "444", "666", "bbb");
 	// ft_printf("%s%s%s%s%s");
 	// ft_printf("%s", "abc");
 	// ft_printf("\n-----------------------------\n");

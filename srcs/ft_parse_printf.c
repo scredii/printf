@@ -52,31 +52,31 @@ int			ft_parse_length(char *str, int i)
 	return (0);
 }
 
-int			ft_parse_width(char *str, int i)
-{
-	char	*tmp;
-	int		j;
-
-	j = 0;
-	if (!(tmp = (char*)malloc(sizeof(char))))
-		return (-1);
-	while (str[i] != '.' && ft_strchr(CONVERS, str[i]) == 0 &&
-			ft_strchr(LENGTH, str[i]) == 0)
-	{
-		if (ft_isdigit(str[i]) == 1)
-		{
-			tmp[j] = str[i];
-			j++;
-		}
-		i++;
-	}
-	g_sarg.width = ft_atoi(tmp);
-	free(tmp);
-	ft_bzero(tmp, ft_strlen(tmp));
-	if (g_sarg.width != 0)
-		return (1);
-	return (0);
-}
+// int			ft_parse_width(char *str, int i)
+// {
+// 	char	*tmp;
+// 	int		j;
+//
+// 	j = 0;
+// 	if (!(tmp = (char*)malloc(sizeof(char))))
+// 		return (-1);
+// 	while (str[i] != '.' && ft_strchr(CONVERS, str[i]) == 0 &&
+// 			ft_strchr(LENGTH, str[i]) == 0)
+// 	{
+// 		if (ft_isdigit(str[i]) == 1)
+// 		{
+// 			tmp[j] = str[i];
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// 	g_sarg.width = ft_atoi(tmp);
+// 	free(tmp);
+// 	ft_bzero(tmp, ft_strlen(tmp));
+// 	if (g_sarg.width != 0)
+// 		return (1);
+// 	return (0);
+// }
 
 int			ft_get_option(char *str, int i)
 {
@@ -121,7 +121,7 @@ int			ft_parse_prec(char *str, int i)
 	if (j != 0)
 		g_sarg.ret = 1;
 	g_sarg.prec = ft_atoi(tmp);
-	free(tmp);
+	//free(tmp);
 	if (g_sarg.prec != 0)
 		return (1);
 	return (0);

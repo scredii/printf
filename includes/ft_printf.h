@@ -64,7 +64,6 @@ void				ft_convert_char(va_list args);
 void				ft_convert_format_x(va_list args);
 void				ft_resolve_dec(void);
 int					ft_parse_params(char *str, va_list args);
-int					ft_parse_width(char *str, int i);
 int					ft_parse_prec(char *str, int i);
 int					ft_parse_length(char *str, int i);
 int					ft_parse_convers(char *str, int i);

@@ -13,6 +13,32 @@
 #include "../includes/ft_printf.h"
 #include <stdio.h>
 
+static int			ft_parse_width(char *str, int i)
+{
+	char	tmp[1000];
+	int		j;
+
+	j = 0;
+	// if (!(tmp = (char*)malloc(sizeof(char))))
+	// 	return (-1);
+	while (str[i] != '.' && ft_strchr(CONVERS, str[i]) == 0 &&
+			ft_strchr(LENGTH, str[i]) == 0)
+	{
+		if (ft_isdigit(str[i]) == 1)
+		{
+			tmp[j] = str[i];
+			j++;
+		}
+		i++;
+	}
+	g_sarg.width = ft_atoi(tmp);
+	//free(tmp);
+	//ft_bzero(tmp, ft_strlen(tmp));
+	if (g_sarg.width != 0)
+		return (1);
+	return (0);
+}
+
 void		ft_parsing(char *str, int i)
 {
 	ft_get_option(str, i);
@@ -54,14 +80,11 @@ int			ft_parse_params(char *str, va_list args)
 					ft_strchr(CONVERS, str[i + 1]) != NULL)
 				j += 1;
 			j += ft_strlen(g_sarg.s);
-			// printf("s:%s\n",g_sarg.s);
-			// printf("p:%s\n",g_sarg.print);
 			g_sarg.len_form = 0;
 			g_sarg.val_ret = g_sarg.val_ret + ft_strlen(g_sarg.s);
 		}
 		else
 		{
-			// printf("c:%c\n",g_sarg.print[j]);
 			g_sarg.print[j] = str[i];
 			g_sarg.val_ret++;
 			j++;
@@ -115,8 +138,6 @@ int			ft_parse_printf(char *str)
 			// 	g_sarg.val_ret = 0;
 			return (1);
 		}
-		if (str[i] == '%' && str[i + 1] == '\0')
-			return (1);
 		i++;
 	}
 	return (1);
@@ -131,8 +152,7 @@ int			ft_printf(const char *str, ...)
 	ret = ft_parse_printf((char*)str);
 	if (ret == 0)
 		ft_parse_params((char*)str, args);
-	// free(g_sarg.s);
-	// ft_bzero(g_sarg.s, ft_strlen(g_sarg.s));
 	va_end(args);
+	// printf("w:%zu\n",g_sarg.width );
 	return (g_sarg.val_ret);
 }

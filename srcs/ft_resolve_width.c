@@ -39,7 +39,7 @@ void		ft_resolve_width(void)
 			g_sarg.s = ft_strjoin(g_sarg.s, tmp2);
 		}
 	}
-	free(tmp2);
+	//free(tmp2);
 }
 
 void		ft_resolve_width_octal(char *tmp)
@@ -71,5 +71,5 @@ void		ft_ret_value(void)
 	tmp = ft_strnew(1000);
 	tmp = ft_itoa(g_sarg.decimal);
 	g_sarg.val_ret = ft_strlen(tmp);
-	free(tmp);
+	//free(tmp);
 }

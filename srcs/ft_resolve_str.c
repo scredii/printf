@@ -34,7 +34,7 @@ void		ft_check_convers(va_list args, char *str)
 		ft_convert_u(args);
 	if (g_sarg.convers == 'c' || g_sarg.convers == 'C')
 		ft_convert_c(tmp, args, str);
-	free(tmp);
+	//free(tmp);
 }
 
 void 		ft_convert_p(va_list args)
@@ -58,8 +58,8 @@ void		ft_resolve_str(char *str)
 		tmp = ft_memset(tmp, ' ', (g_sarg.width - ft_strlen(g_sarg.s)));
 		g_sarg.s = ft_strjoin(tmp, g_sarg.s);
 	}
-	if (tmp)
-		free(tmp);
+	// if (tmp)
+	// 	free(tmp);
 }
 
 void		ft_len_form(char *str, int i)

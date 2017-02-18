@@ -56,7 +56,7 @@ void		ft_resolve_dec(void)
 		&& g_sarg.convers == 'd' && ft_strchr(g_sarg.option, '-') == NULL)
 		ft_resolve_zero(tmp);
 	ft_resolve_dec2(tmp);
-	free(tmp);
+	//free(tmp);
 }
 
 void		ft_resolve_dec2(char *tmp)
@@ -65,7 +65,7 @@ void		ft_resolve_dec2(char *tmp)
 	{
 		if (g_sarg.decimal > 0)
 			tmp = ft_memset(tmp, '0', g_sarg.prec - ft_strlen(g_sarg.s));
-		else
+		if (ft_strchr(g_sarg.s, '-') != NULL)
 			tmp = ft_memset(tmp, '0', g_sarg.prec - ft_strlen(g_sarg.s) + 1);
 		g_sarg.s = ft_strjoinfree(tmp, g_sarg.s, 0, 1);
 	}

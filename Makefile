@@ -14,34 +14,34 @@ NAME = libftprintf.a
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = 	srcs/ft_printf.c srcs/ft_parse_printf.c srcs/ft_resolve_str.c		\
-		srcs/ft_resolve_dec.c libft/ft_bzero.c libft/ft_isdigit.c			\
-		libft/ft_itoa.c libft/ft_memset.c libft/ft_putchar.c				\
-		libft/ft_putstr.c libft/ft_strchr.c libft/ft_strjoin.c				\
-		libft/ft_strlen.c libft/ft_strnew.c libft/ft_strsub.c				\
-		libft/ft_memalloc.c libft/ft_strdup.c libft/ft_itoa_base.c			\
-		libft/ft_tolower.c libft/ft_toupper.c libft/ft_atoi.c				\
-		srcs/ft_convert_long.c libft/ft_ltoa_base.c libft/ft_lltoa.c		\
-		libft/ft_ltoa.c libft/ft_lltoa_base.c libft/ft_imtoa_base.c			\
-		srcs/ft_convert_args.c srcs/ft_resolve_width.c libft/ft_putnbr.c	\
-		srcs/ft_convert_x.c libft/ft_strdel.c libft/ft_strjoinfree.c		\
-		libft/ft_strcat.c libft/ft_strcpy.c\
+SRC = 	srcs/ft_printf.c srcs/ft_parse_printf.c srcs/ft_resolve_str.c	\
+		srcs/ft_resolve_dec.c srcs/ft_bzero.c srcs/ft_isdigit.c			\
+		srcs/ft_itoa.c srcs/ft_memset.c srcs/ft_putchar.c				\
+		srcs/ft_putstr.c srcs/ft_strchr.c srcs/ft_strjoin.c				\
+		srcs/ft_strlen.c srcs/ft_strnew.c srcs/ft_strsub.c				\
+		srcs/ft_memalloc.c srcs/ft_strdup.c srcs/ft_itoa_base.c			\
+		srcs/ft_tolower.c srcs/ft_toupper.c srcs/ft_atoi.c				\
+		srcs/ft_convert_long.c srcs/ft_ltoa_base.c srcs/ft_lltoa.c		\
+		srcs/ft_ltoa.c srcs/ft_lltoa_base.c srcs/ft_imtoa_base.c		\
+		srcs/ft_convert_args.c srcs/ft_resolve_width.c srcs/ft_putnbr.c	\
+		srcs/ft_convert_x.c srcs/ft_strdel.c srcs/ft_strjoinfree.c		\
+		srcs/ft_strcat.c srcs/ft_strcpy.c\
 
 OBJ = $(SRC:.c=.o)
 
 $(NAME): $(OBJ)
-	make --no-print-directory -C ./libft
+	# make --no-print-directory -C ./libft
 	@ar rc $(NAME) $(OBJ)
 	@echo "Libft compiled."
 
 all: $(NAME)
 
 clean:
-	make --no-print-directory -C ./libft clean
+	# make --no-print-directory -C ./libft clean
 	rm -rf $(OBJ)
 
 fclean : clean
-	make --no-print-directory -C ./libft fclean
+	# make --no-print-directory -C ./libft fclean
 	rm -rf $(NAME)
 
 re: fclean all
