@@ -13,7 +13,6 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "../libft/libft.h"
 # include <stdarg.h>
 # include <unistd.h>
 # include <string.h>
@@ -78,4 +77,30 @@ void				ft_convert_d(va_list args);
 int					ft_convert_format(va_list args);
 void				ft_convert_u(va_list args);
 
+int					ft_atoi(const char *str);
+void				ft_bzero(void *s, size_t len);
+char				*ft_imtoa_base(uintmax_t value, uintmax_t base);
+int					ft_isdigit(int c);
+char				*ft_itoa_base(intmax_t value, int base);
+char				*ft_itoa(int n);
+char				*ft_lltoa_base(long long value, int base);
+char				*ft_ltoa(long n);
+void				ft_putstr(char const *s);
+void				ft_putnbr(int n);
+char				*ft_strjoinfree(char *s1, char *s2, int free1, int free2);
+size_t				ft_strlen(const char *s);
+char				*ft_strnew(size_t size);
+char				*ft_strchr(const char *s, int c);
+void				ft_putchar(char c);
+char				*ft_strjoin(char const *s1, char const *s2);
+void				*ft_memset(void *s, int c, size_t len);
+char				*ft_strdup(const char *s1);
+void				*ft_memalloc(size_t size);
+char				*ft_lltoa(long long n);
+char				*ft_strsub(char const *s, unsigned int start, size_t len);
+int					ft_tolower(int c);
+char				*ft_ltoa_base(long int value, int base);
+int					ft_toupper(int c);
+char				*ft_strcpy(char *dst, const char *src);
+char				*ft_strcat(char *s1, const char *s2);
 #endif

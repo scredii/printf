@@ -23,7 +23,7 @@ void		ft_convert_c(char *tmp, va_list args, char *str)
 	if (tmp[0] == '\0')
 	{
 		g_sarg.s = "";
-		if (ft_strlen(g_sarg.print) == 0)
+		if (ft_strlen(g_sarg.print) == 0 && ft_strlen(g_sarg.s) == 0)
 			g_sarg.val_ret = g_sarg.val_ret + 1;
 		if (g_sarg.width > ft_strlen(g_sarg.s))
 		{

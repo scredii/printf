@@ -32,7 +32,7 @@ int		ft_convert_format(va_list args)
 		return (1);
 	}
 	ret = convert_format_2(args);
-	if (g_sarg.convers == 'o')
+	if (g_sarg.convers == 'o' && ft_strlen(g_sarg.length) == 0)
 	{
 		ft_convert_o(args);
 		return (1);
@@ -58,8 +58,10 @@ int		convert_format_2(va_list args)
 	if (ft_strchr(g_sarg.length, 'z') != NULL ||
 			ft_strchr(g_sarg.length, 'j') != NULL)
 	{
-		g_sarg.decimal = va_arg(args, size_t);
+		g_sarg.decimal = (size_t)va_arg(args, size_t);
 		g_sarg.s = ft_ltoa((size_t)g_sarg.decimal);
+		// g_sarg.decimal = (uintmax_t)va_arg(args, long long);
+		// g_sarg.s = ft_lltoa(g_sarg.decimal);
 		return (1);
 	}
 	return (0);

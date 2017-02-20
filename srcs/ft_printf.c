@@ -19,8 +19,6 @@ static int			ft_parse_width(char *str, int i)
 	int		j;
 
 	j = 0;
-	// if (!(tmp = (char*)malloc(sizeof(char))))
-	// 	return (-1);
 	while (str[i] != '.' && ft_strchr(CONVERS, str[i]) == 0 &&
 			ft_strchr(LENGTH, str[i]) == 0)
 	{
@@ -32,8 +30,6 @@ static int			ft_parse_width(char *str, int i)
 		i++;
 	}
 	g_sarg.width = ft_atoi(tmp);
-	//free(tmp);
-	//ft_bzero(tmp, ft_strlen(tmp));
 	if (g_sarg.width != 0)
 		return (1);
 	return (0);
@@ -75,7 +71,7 @@ int			ft_parse_params(char *str, va_list args)
 			}
 			ft_check_convers(args, str);
 			if (ft_strlen(g_sarg.print) > 0 || str[i + 1] != '\0')
-				g_sarg.print = ft_strjoinfree(g_sarg.print, g_sarg.s, 1, 0);
+				g_sarg.print = ft_strjoinfree(g_sarg.print, g_sarg.s, 0, 0);
 			if (g_sarg.prec == 0 && g_sarg.ret == 1 &&
 					ft_strchr(CONVERS, str[i + 1]) != NULL)
 				j += 1;
@@ -149,10 +145,10 @@ int			ft_printf(const char *str, ...)
 	int		ret;
 
 	va_start(args, str);
+	g_sarg.val_ret = 0;
 	ret = ft_parse_printf((char*)str);
 	if (ret == 0)
 		ft_parse_params((char*)str, args);
 	va_end(args);
-	// printf("w:%zu\n",g_sarg.width );
 	return (g_sarg.val_ret);
 }

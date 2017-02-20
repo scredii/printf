@@ -21,25 +21,26 @@ void		ft_check_convers(va_list args, char *str)
 	g_sarg.s = ft_strnew(1);
 	if (g_sarg.convers == 'p')
 		ft_convert_p(args);
-	if (g_sarg.convers == 's' /*|| g_sarg.convers == 'S' || g_sarg.convers == 'p'*/)
+	if (g_sarg.convers == 's' || g_sarg.convers == 'S')
 	{
 		ft_convert_char(args);
 		ft_resolve_str(str);
 	}
-	if (g_sarg.convers == 'd' || g_sarg.convers == 'o')
+	if (g_sarg.convers == 'd' || g_sarg.convers == 'o' || g_sarg.convers == 'i'
+		|| g_sarg.convers == 'O')
 		ft_convert_d(args);
 	if (g_sarg.convers == 'x' || g_sarg.convers == 'X')
 		ft_job_for_x(args, tmp);
-	if (g_sarg.convers == 'u' || g_sarg.convers == 'U')
+	if (g_sarg.convers == 'u' || g_sarg.convers == 'U' || g_sarg.convers == 'D')
 		ft_convert_u(args);
 	if (g_sarg.convers == 'c' || g_sarg.convers == 'C')
 		ft_convert_c(tmp, args, str);
-	//free(tmp);
 }
 
 void 		ft_convert_p(va_list args)
 {
 	g_sarg.s = ft_itoa_base(va_arg(args, long), 16);
+	ft_convert_hexa();
 }
 
 void		ft_resolve_str(char *str)

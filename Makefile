@@ -30,18 +30,14 @@ SRC = 	srcs/ft_printf.c srcs/ft_parse_printf.c srcs/ft_resolve_str.c	\
 OBJ = $(SRC:.c=.o)
 
 $(NAME): $(OBJ)
-	# make --no-print-directory -C ./libft
 	@ar rc $(NAME) $(OBJ)
-	@echo "Libft compiled."
 
 all: $(NAME)
 
 clean:
-	# make --no-print-directory -C ./libft clean
 	rm -rf $(OBJ)
 
 fclean : clean
-	# make --no-print-directory -C ./libft fclean
 	rm -rf $(NAME)
 
 re: fclean all

@@ -32,7 +32,8 @@ void		ft_convert_format_x(va_list args)
 	else
 	{
 		tmp = va_arg(args, long long);
-		if (tmp == 0)
+		if (tmp == 0 && (ft_strchr(g_sarg.option, '#') != NULL ||
+				g_sarg.ret != 0))
 			return ;
 		g_sarg.decimal = tmp;
 		g_sarg.s = ft_lltoa_base((unsigned int)g_sarg.decimal, 16);
