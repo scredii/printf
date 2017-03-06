@@ -6,69 +6,79 @@
 /*   By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 18:06:56 by abourgeu          #+#    #+#             */
-/*   Updated: 2017/02/08 17:17:46 by abourgeu         ###   ########.fr       */
+/*   Updated: 2017/03/06 12:28:58 by abourgeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 #include <stdio.h>
 
-void		ft_check_convers(va_list args, char *str)
+void		ft_check_convers(va_list args)
 {
 	char *tmp;
 
-	tmp = ft_strnew(ft_strlen(str) * g_sarg.width);
+	tmp = ft_strnew(1);
 	g_sarg.s = ft_strnew(1);
-	if (g_sarg.convers == 'p')
+	if (CONV == 'p')
 		ft_convert_p(args);
-	if (g_sarg.convers == 's' || g_sarg.convers == 'S')
+	if (CONV == 's' || CONV == 'S')
 	{
 		ft_convert_char(args);
-		ft_resolve_str(str);
+		ft_resolve_str();
 	}
-	if (g_sarg.convers == 'd' || g_sarg.convers == 'o' || g_sarg.convers == 'i'
-		|| g_sarg.convers == 'O')
+	if (CONV == 'd' || CONV == 'o' || CONV == 'i' || CONV == 'O')
 		ft_convert_d(args);
-	if (g_sarg.convers == 'x' || g_sarg.convers == 'X')
+	if (CONV == 'x' || CONV == 'X')
 		ft_job_for_x(args, tmp);
-	if (g_sarg.convers == 'u' || g_sarg.convers == 'U' || g_sarg.convers == 'D')
+	if (CONV == 'u' || CONV == 'U' || CONV == 'D')
 		ft_convert_u(args);
-	if (g_sarg.convers == 'c' || g_sarg.convers == 'C')
-		ft_convert_c(tmp, args, str);
+	if (CONV == 'c' || CONV == 'C')
+		ft_convert_c(tmp, args);
+	free(tmp);
 }
 
 void 		ft_convert_p(va_list args)
 {
-	g_sarg.s = ft_itoa_base(va_arg(args, long), 16);
+	g_sarg.s = ft_itoa_base(va_arg(args, int), 16);
 	ft_convert_hexa();
 }
 
-void		ft_resolve_str(char *str)
+void		ft_resolve_str(void)
 {
 	char	*tmp;
 
-	tmp = ft_strnew(ft_strlen(str) * g_sarg.width);
+	tmp = ft_strnew(1);
 	if (ft_strchr(g_sarg.option, '-') != NULL)
 	{
-		if ((size_t)g_sarg.width > ft_strlen(g_sarg.s))
+		if (g_sarg.width > ft_strlen(g_sarg.s))
+		{
 			tmp = ft_memset(tmp, ' ', (g_sarg.width - ft_strlen(g_sarg.s)));
-		g_sarg.s = ft_strjoin(g_sarg.s, tmp);
+			g_sarg.s = ft_strjoin(g_sarg.s, tmp);
+		}
 	}
 	if (ft_strchr(g_sarg.option, '-') == NULL && g_sarg.width > 0)
 	{
 		tmp = ft_memset(tmp, ' ', (g_sarg.width - ft_strlen(g_sarg.s)));
 		g_sarg.s = ft_strjoin(tmp, g_sarg.s);
 	}
-	// if (tmp)
-	// 	free(tmp);
+	free(tmp);
 }
 
 void		ft_len_form(char *str, int i)
 {
-	i--;
+	int j;
+
+	j = 0;
+	i -= 1;
 	while (ft_strchr(CONVERS, str[i]) == NULL)
 	{
 		g_sarg.len_form++;
+		if (j == 10)
+		{
+			g_sarg.len_form = 0;
+			break;
+		}
+		j++;
 		i++;
 	}
 }

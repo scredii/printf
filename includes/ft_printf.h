@@ -6,7 +6,7 @@
 /*   By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/28 16:05:18 by abourgeu          #+#    #+#             */
-/*   Updated: 2017/02/08 17:11:42 by abourgeu         ###   ########.fr       */
+/*   Updated: 2017/03/02 23:50:33 by abourgeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <string.h>
 # include <stdlib.h>
 
+# define CONV g_sarg.convers
 # define OPT "-+ #0"
 # define CONVERS "sSpdDioOuUxXcC"
 # define LENGTH "hhhllljz"
@@ -50,11 +51,11 @@ int					convert_format_2(va_list args);
 void				ft_convert_o(va_list args);
 void				ft_parsing(char *str, int i);
 int					ft_get_option(char *str, int i);
-void				ft_convert_c(char *tmp, va_list args, char *str);
+void				ft_convert_c(char *tmp, va_list args);
 void				ft_job_for_x(va_list args, char *tmp);
 void				ft_resolve_width_x(char *tmp);
 void				ft_convert_length_x(va_list args);
-void				ft_resolve_oneperc(char *str);
+void				ft_resolve_oneperc(void);
 void				ft_ret_value();
 void				ft_delete_neg();
 void				ft_resolve_width_octal(char *tmp);
@@ -68,8 +69,8 @@ int					ft_parse_length(char *str, int i);
 int					ft_parse_convers(char *str, int i);
 void				ft_resolve_option(va_list args);
 int					ft_parse_printf(char *str);
-void				ft_resolve_str(char *str);
-void				ft_check_convers(va_list args, char *str);
+void				ft_resolve_str(void);
+void				ft_check_convers(va_list args);
 void				ft_len_form(char *str, int i);
 void				ft_double_percent(char *str, int i);
 void				ft_convert_hexa(void);
@@ -103,4 +104,5 @@ char				*ft_ltoa_base(long int value, int base);
 int					ft_toupper(int c);
 char				*ft_strcpy(char *dst, const char *src);
 char				*ft_strcat(char *s1, const char *s2);
+int					ft_strcmp(const char *s1, const char *s2);
 #endif

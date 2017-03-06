@@ -6,7 +6,7 @@
 #    By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/24 11:37:19 by abourgeu          #+#    #+#              #
-#    Updated: 2017/02/07 15:57:40 by abourgeu         ###   ########.fr        #
+#    Updated: 2017/03/02 23:50:48 by abourgeu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRC = 	srcs/ft_printf.c srcs/ft_parse_printf.c srcs/ft_resolve_str.c	\
 		srcs/ft_ltoa.c srcs/ft_lltoa_base.c srcs/ft_imtoa_base.c		\
 		srcs/ft_convert_args.c srcs/ft_resolve_width.c srcs/ft_putnbr.c	\
 		srcs/ft_convert_x.c srcs/ft_strdel.c srcs/ft_strjoinfree.c		\
-		srcs/ft_strcat.c srcs/ft_strcpy.c\
+		srcs/ft_strcat.c srcs/ft_strcpy.c srcs/ft_strcmp.c\
 
 OBJ = $(SRC:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 18:59:57 by abourgeu          #+#    #+#             */
-/*   Updated: 2017/02/08 17:16:21 by abourgeu         ###   ########.fr       */
+/*   Updated: 2017/03/06 12:28:15 by abourgeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ void		ft_convert_hexa(void)
 	int		i;
 
 	i = -1;
+	if (g_sarg.convers == 'p')
+		g_sarg.s = ft_strjoin("0x7fff", g_sarg.s);
 	if (g_sarg.convers == 'x')
 	{
 		while (g_sarg.s[++i])

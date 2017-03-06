@@ -7,9 +7,42 @@
 
 int		main(void)
 {
+	// ft_printf("1:%%\n");
+	// printf("1:%%\n");
+	// ft_printf("2:aa%%bb\n");
+	// printf("2:aa%%bb\n");
+	// ft_printf("3:%%%%%%%%%%\n");
+	// printf("3:%%%%%%%%%%\n");
+	// ft_printf("4:.%%.%%.%%.%%.%%.%%.%%.%%.\n");
+	// printf("4:.%%.%%.%%.%%.%%.%%.%%.%%.\n");
+	// ft_printf("5:%\n");
+	// printf("5:%\n");
+	// ft_printf("6:% Zoooo\n");
+	// printf("6:% Zoooo\n");
+	// ft_printf("7:{%}\n");
+	// printf("7:{%}\n");
+	// ft_printf("8:{% %}\n");
+	// printf("8:{% %}\n");
+	// unsigned long	l;
+	// int 			i;
+	// char			*str;
+	//
+	// i = 500;
+	// l = 480489;
+	// str = "HELLO WORLD";
+	// ft_printf("1:%p\n", &i);
+	// printf("1:%p\n", &i);
+	// ft_printf("2:%p\n", &l);
+	// printf("2:%p\n", &l);
+	// ft_printf("3:%p\n", &str);
+	// printf("3:%p\n", &str);
+	// ft_printf("4:%p\n", &strlen);
+	// printf("4:%p\n", &strlen);
+	// ft_printf("5:%p\n", 0);
+	// printf("5:%p\n", 0);
 
-	// printf("%d\n", ft_printf("%o\n", 42));
-	// printf("%d\n", printf("%o\n", 42));
+	//  printf("%d\n", ft_printf("%s", 0));
+	//  printf("%d\n", printf("%s", 0));
 	// printf("%d\n", ft_printf("before %o after\n", 42));
 	// printf("%d\n", printf("before %o after\n", 42));
 	// printf("%d\n", ft_printf("%o%o%o%o%o\n", 1, 100, 999, 42, 999988888));

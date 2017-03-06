@@ -6,14 +6,14 @@
 /*   By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/20 16:15:16 by abourgeu          #+#    #+#             */
-/*   Updated: 2017/02/08 17:14:21 by abourgeu         ###   ########.fr       */
+/*   Updated: 2017/03/06 12:15:12 by abourgeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 #include <stdio.h>
 
-void		ft_convert_c(char *tmp, va_list args, char *str)
+void		ft_convert_c(char *tmp, va_list args)
 {
 	char c;
 	char *tmp2;
@@ -25,7 +25,7 @@ void		ft_convert_c(char *tmp, va_list args, char *str)
 		g_sarg.s = "";
 		if (ft_strlen(g_sarg.print) == 0 && ft_strlen(g_sarg.s) == 0)
 			g_sarg.val_ret = g_sarg.val_ret + 1;
-		if (g_sarg.width > ft_strlen(g_sarg.s))
+		if ((size_t)g_sarg.width > ft_strlen(g_sarg.s))
 		{
 			tmp2 = ft_strnew(g_sarg.width + ft_strlen(g_sarg.s));
 			tmp2 = ft_memset(tmp2, ' ', g_sarg.width - g_sarg.val_ret);
@@ -36,16 +36,17 @@ void		ft_convert_c(char *tmp, va_list args, char *str)
 	}
 	g_sarg.s[0] = c;
 	if (g_sarg.s[0] != '\0')
-		ft_resolve_str(str);
+		ft_resolve_str();
 }
 
 void		ft_convert_char(va_list args)
 {
 	g_sarg.s = va_arg(args, char*);
+
 	if (g_sarg.s == NULL)
 	{
 		g_sarg.s = "(null)";
-		g_sarg.val_ret = ft_strlen(g_sarg.s) - 12;
+		//g_sarg.val_ret = ft_strlen(g_sarg.s) - 12;
 		return ;
 	}
 	if (g_sarg.ret == 1 && g_sarg.convers != 'p')

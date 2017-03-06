@@ -6,7 +6,7 @@
 /*   By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/28 16:04:55 by abourgeu          #+#    #+#             */
-/*   Updated: 2017/02/08 17:20:09 by abourgeu         ###   ########.fr       */
+/*   Updated: 2017/03/02 23:25:31 by abourgeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int			ft_parse_params(char *str, va_list args)
 			ft_parsing(str, i);
 			if (g_sarg.convers == '%')
 			{
-				ft_resolve_oneperc(str);
+				ft_resolve_oneperc();
 				return (1);
 			}
 			if (ft_strchr(CONVERS, str[i]) == NULL)
@@ -69,7 +69,7 @@ int			ft_parse_params(char *str, va_list args)
 				ft_len_form(str, i);
 				i += g_sarg.len_form - 1;
 			}
-			ft_check_convers(args, str);
+			ft_check_convers(args);
 			if (ft_strlen(g_sarg.print) > 0 || str[i + 1] != '\0')
 				g_sarg.print = ft_strjoinfree(g_sarg.print, g_sarg.s, 0, 0);
 			if (g_sarg.prec == 0 && g_sarg.ret == 1 &&
