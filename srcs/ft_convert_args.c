@@ -6,7 +6,7 @@
 /*   By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/20 16:15:16 by abourgeu          #+#    #+#             */
-/*   Updated: 2017/03/06 12:15:12 by abourgeu         ###   ########.fr       */
+/*   Updated: 2017/03/07 10:48:58 by abourgeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void		ft_convert_u(va_list args)
 		}
 		else
 		{
-			tmp = va_arg(args, unsigned long);
+			tmp = (long)va_arg(args, unsigned long);
 			g_sarg.decimal = tmp;
 			g_sarg.s = ft_ltoa(g_sarg.decimal);
 		}
@@ -126,8 +126,3 @@ void		ft_delete_neg(void)
 	tmp = ft_strjoin("-", tmp);
 	g_sarg.s = tmp;
 }
-
-// void ft_add_new_0(void)
-// {
-// 	/* code */
-// }

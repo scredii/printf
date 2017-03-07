@@ -6,7 +6,7 @@
 /*   By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/28 16:04:55 by abourgeu          #+#    #+#             */
-/*   Updated: 2017/03/02 23:25:31 by abourgeu         ###   ########.fr       */
+/*   Updated: 2017/03/06 14:56:56 by abourgeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,8 @@ int			ft_printf(const char *str, ...)
 	int		ret;
 
 	va_start(args, str);
+	// ft_bzero(g_sarg.s, ft_strlen(g_sarg.s));
+	// ft_bzero(g_sarg.print, ft_strlen(g_sarg.print));
 	g_sarg.val_ret = 0;
 	ret = ft_parse_printf((char*)str);
 	if (ret == 0)

@@ -6,7 +6,7 @@
 /*   By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 18:06:56 by abourgeu          #+#    #+#             */
-/*   Updated: 2017/03/06 12:28:58 by abourgeu         ###   ########.fr       */
+/*   Updated: 2017/03/07 13:24:16 by abourgeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ void		ft_check_convers(va_list args)
 		ft_convert_char(args);
 		ft_resolve_str();
 	}
-	if (CONV == 'd' || CONV == 'o' || CONV == 'i' || CONV == 'O')
+	if (CONV == 'o')
+		ft_convert_o(args);
+	if (CONV == 'd' || CONV == 'i' || CONV == 'O')
 		ft_convert_d(args);
 	if (CONV == 'x' || CONV == 'X')
 		ft_job_for_x(args, tmp);
@@ -39,7 +41,7 @@ void		ft_check_convers(va_list args)
 
 void 		ft_convert_p(va_list args)
 {
-	g_sarg.s = ft_itoa_base(va_arg(args, int), 16);
+	g_sarg.s = ft_itoa_base(va_arg(args, int), HEXA, 16);
 	ft_convert_hexa();
 }
 

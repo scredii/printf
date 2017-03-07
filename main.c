@@ -4,9 +4,42 @@
 #include <signal.h>
 #include <stdio.h>
 
-
 int		main(void)
 {
+	// ft_printf("%zd%zd\n", 0, 42);
+	// printf("%zd%zd\n", 0, 42);
+	//
+	// ft_printf("%zd\n", LLONG_MAX);
+	// printf("%zd\n", LLONG_MAX);
+	//
+	// ft_printf("%zi%zi\n", 0, 42);
+	// printf("%zi%zi\n", 0, 42);
+	//
+	// ft_printf("%zi\n", LLONG_MAX);
+	// printf("%zi\n", LLONG_MAX);
+
+	// ft_printf("%zu, %zu\n", 0, ULLONG_MAX);
+	// printf("%zu, %zu\n", 0, ULLONG_MAX);
+
+	ft_printf("%zo, %zo\n", 0, ULLONG_MAX);
+	printf("%zo, %zo\n", 0, ULLONG_MAX);
+	//
+	// ft_printf("%zx, %zx\n", 0, ULLONG_MAX);
+	// printf("%zx, %zx\n", 0, ULLONG_MAX);
+	//
+	// ft_printf("%zX, %zX\n", 0, ULLONG_MAX);
+	// printf("%zX, %zX\n", 0, ULLONG_MAX);
+
+	// ft_printf("%zO, %zO\n", 0, USHRT_MAX);
+	// printf("%zO, %zO\n", 0, USHRT_MAX);
+	//
+	// ft_printf("%zU, %zU\n", 0, USHRT_MAX);
+	// printf("%zU, %zU\n", 0, USHRT_MAX);
+	//
+	// ft_printf("%zD, %zD\n", 0, USHRT_MAX);
+	// printf("%zD, %zD\n", 0, USHRT_MAX);
+	// printf("v:%D", LONG_MIN);
+	// ft_printf("f:%D", LONG_MIN);
 	// ft_printf("1:%%\n");
 	// printf("1:%%\n");
 	// ft_printf("2:aa%%bb\n");

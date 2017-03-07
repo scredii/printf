@@ -6,7 +6,7 @@
 /*   By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/28 16:05:18 by abourgeu          #+#    #+#             */
-/*   Updated: 2017/03/02 23:50:33 by abourgeu         ###   ########.fr       */
+/*   Updated: 2017/03/07 13:37:54 by abourgeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include <string.h>
 # include <stdlib.h>
 
+# define OCTAL "01234567"
+# define HEXA "0123456789abcdef"
+# define HEXAM "0123456789ABCDEF"
 # define CONV g_sarg.convers
 # define OPT "-+ #0"
 # define CONVERS "sSpdDioOuUxXcC"
@@ -43,6 +46,7 @@ typedef struct		s_args
 
 t_args				g_sarg;
 
+void 				ft_O(va_list args);
 void 				ft_convert_p(va_list args);
 int					ft_put_printf(void);
 void				ft_resolve_zero(char *tmp);
@@ -78,11 +82,13 @@ void				ft_convert_d(va_list args);
 int					ft_convert_format(va_list args);
 void				ft_convert_u(va_list args);
 
+void				ft_format_o(va_list args);
+char				*ft_uitoa(uintmax_t n);
 int					ft_atoi(const char *str);
 void				ft_bzero(void *s, size_t len);
 char				*ft_imtoa_base(uintmax_t value, uintmax_t base);
 int					ft_isdigit(int c);
-char				*ft_itoa_base(intmax_t value, int base);
+char				*ft_itoa_base(uintmax_t n, char *s, int base);
 char				*ft_itoa(int n);
 char				*ft_lltoa_base(long long value, int base);
 char				*ft_ltoa(long n);

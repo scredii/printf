@@ -6,46 +6,44 @@
 /*   By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 13:53:51 by abourgeu          #+#    #+#             */
-/*   Updated: 2017/01/18 13:54:47 by abourgeu         ###   ########.fr       */
+/*   Updated: 2017/03/06 15:25:21 by abourgeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static void		ft_itoa_neg(long *n, long *neg)
+
+static long		my_longlen(long n)
 {
-	if (*n < 0)
+	long		len;
+
+	len = ((n >= 0) ? 1 : 2);
+	n = ((n < 0) ? n : -n);
+	while (n <= -10 && len++)
+		n = (n / -10) * -1;
+	return (len);
+}
+
+static char		*my_long_to_str(char *str, long n)
+{
+	if (n <= -10)
 	{
-		*n *= -1;
-		*neg = 1;
+		str = my_long_to_str(str, ((n / -10) * -1));
+		str[ft_strlen(str)] = (char)(((n % -10) * -1) + '0');
+		return (str);
 	}
+	str[ft_strlen(str)] = (char)(-n + '0');
+	return (str);
 }
 
 char			*ft_ltoa(long n)
 {
-	long		len;
-	long		ntmp;
-	long		neg;
-	char		*str;
+	char	*result;
 
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	ntmp = n;
-	len = 2;
-	neg = 0;
-	ft_itoa_neg(&n, &neg);
-	while (ntmp /= 10)
-		len++;
-	len += neg;
-	if (!(str = (char *)malloc(sizeof(char) * len)))
-		return (NULL);
-	str[--len] = '\0';
-	while (len--)
-	{
-		str[len] = n % 10 + '0';
-		n = n / 10;
-	}
-	if (neg == 1)
-		str[0] = '-';
-	return (str);
+	result = ft_strnew(my_longlen(n));
+	if (n < 0)
+		result = ft_strcat(result, "-");
+	else
+		n = -n;
+	return (my_long_to_str(result, n));
 }

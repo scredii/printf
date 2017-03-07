@@ -6,17 +6,28 @@
 /*   By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 13:57:13 by abourgeu          #+#    #+#             */
-/*   Updated: 2017/03/02 23:43:07 by abourgeu         ###   ########.fr       */
+/*   Updated: 2017/03/07 13:51:55 by abourgeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 #include <stdio.h>
 
+void ft_O(va_list args)
+{
+	if (ft_strchr(g_sarg.length, 'z') != NULL)
+		g_sarg.s = ft_itoa_base(((uintmax_t)va_arg(args, long)), OCTAL, 8);
+}
+
 int		ft_convert_format(va_list args)
 {
 	int		ret;
 
+	if (CONV == 'O')
+	{
+		ft_O(args);
+		return (1);
+	}
 	if (ft_strchr(&g_sarg.length[0], 'l') != NULL &&
 			ft_strchr(&g_sarg.length[1], 'l') != NULL)
 	{
@@ -58,31 +69,39 @@ int		convert_format_2(va_list args)
 	if (ft_strchr(g_sarg.length, 'z') != NULL ||
 			ft_strchr(g_sarg.length, 'j') != NULL)
 	{
-		g_sarg.decimal = (size_t)va_arg(args, size_t);
-		g_sarg.s = ft_ltoa((size_t)g_sarg.decimal);
-		// g_sarg.decimal = (uintmax_t)va_arg(args, long long);
-		// g_sarg.s = ft_lltoa(g_sarg.decimal);
+		g_sarg.decimal = (uintmax_t)va_arg(args, size_t);
+		g_sarg.s = ft_uitoa(g_sarg.decimal);
 		return (1);
 	}
 	return (0);
 }
 
+void ft_format_o(va_list args)
+{
+	if (ft_strchr(g_sarg.length, 'z') != NULL ||
+			ft_strchr(g_sarg.length, 'j') != NULL)
+	{
+		// g_sarg.decimal = (uintmax_t)va_arg(args, long);
+		g_sarg.s = ft_itoa_base((uintmax_t)va_arg(args, unsigned long), OCTAL, 8);
+		return ;
+	}
+	else
+			g_sarg.decimal = va_arg(args, int);
+}
+
 void	ft_convert_o(va_list args)
 {
-	int		tmp;
-
-	tmp = va_arg(args, int);
-	if (tmp == 0 && g_sarg.ret == 0)
+	ft_format_o(args);
+	if (g_sarg.decimal == 0 && g_sarg.ret == 0)
 	{
 		g_sarg.s = "0";
 		return ;
 	}
-	if (tmp == 0 && g_sarg.ret == 1)
+	if (g_sarg.decimal == 0 && g_sarg.ret == 1)
 	{
 		g_sarg.s = "";
 		return ;
 	}
-	g_sarg.decimal = tmp;
-	g_sarg.s = ft_itoa_base((int)g_sarg.decimal, 8);
+	// g_sarg.s = ft_itoa_base((int)g_sarg.decimal, 8);
 	return ;
 }

@@ -1,49 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_uitoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/16 15:49:43 by abourgeu          #+#    #+#             */
-/*   Updated: 2017/03/07 13:15:59 by abourgeu         ###   ########.fr       */
+/*   Created: 2017/03/07 10:58:31 by abourgeu          #+#    #+#             */
+/*   Updated: 2017/03/07 10:59:02 by abourgeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-uintmax_t		ft_poweru(uintmax_t n, uintmax_t base)
+static uintmax_t		ft_get_len(uintmax_t *n)
 {
-	int		count;
+	uintmax_t		i;
+	uintmax_t		len;
 
-	count = 0;
-	while (n > 0)
+	len = 1;
+	i = 1;
+	while ((*n / i) >= 10)
 	{
-		n = n / base;
-		count++;
+		i *= 10;
+		len++;
 	}
-	return (count);
+	return (len);
 }
 
-char			*ft_itoa_base(uintmax_t n, char *s, int base)
+char					*ft_uitoa(uintmax_t n)
 {
 	uintmax_t		len;
 	char			*str;
-	uintmax_t		i;
 
-	i = 0;
-	if (!s || !base)
+	len = ft_get_len(&n);
+	if (!(str = ft_strnew(len)))
 		return (NULL);
-	if (n == 0)
-		return (ft_strdup("0"));
-	i = ft_poweru(n, base);
-	len = i;
-	str = ft_strnew(len);
-	while (len)
+	while (len-- > 0)
 	{
-		str[len - 1] = s[(n % base)];
-		n = n / base;
-		len--;
+		str[len] = n % 10 + '0';
+		n /= 10;
 	}
 	return (str);
 }
