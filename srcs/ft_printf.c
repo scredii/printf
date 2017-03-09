@@ -6,7 +6,7 @@
 /*   By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/28 16:04:55 by abourgeu          #+#    #+#             */
-/*   Updated: 2017/03/08 17:12:57 by abourgeu         ###   ########.fr       */
+/*   Updated: 2017/03/08 22:48:27 by abourgeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,10 +143,10 @@ int			ft_parse_printf(char *str)
 }
 void ft_clean(void)
 {
-	if(ft_strlen(g_sarg.option) > 1)
-		ft_strdel(&g_sarg.option);
-	if(ft_strlen(g_sarg.length) > 1)
-		ft_strdel(&g_sarg.length);
+	// if(ft_strlen(g_sarg.option) > 1)
+	// 	ft_strdel(&g_sarg.option);
+	// if(ft_strlen(g_sarg.length) > 1)
+	// 	ft_strdel(&g_sarg.length);
 	// if(g_sarg.s)
 	// 	ft_strdel(&g_sarg.s);
 	// if(g_sarg.print)
