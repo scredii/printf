@@ -6,7 +6,7 @@
 /*   By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/20 16:15:16 by abourgeu          #+#    #+#             */
-/*   Updated: 2017/03/07 10:48:58 by abourgeu         ###   ########.fr       */
+/*   Updated: 2017/03/08 14:58:24 by abourgeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,11 @@ void		ft_convert_u(va_list args)
 		if (g_sarg.convers == 'u')
 		{
 			tmp = (unsigned int)va_arg(args, unsigned int);
+			if (tmp == 0 && g_sarg.ret == 1)
+			{
+				g_sarg.s = "";
+				return ;
+			}
 			g_sarg.decimal = tmp;
 			g_sarg.s = ft_ltoa(g_sarg.decimal);
 		}
@@ -82,6 +87,8 @@ void		ft_convert_d(va_list args)
 	long long		tmp;
 	int				ret;
 
+	if (CONV == 'O')
+		g_sarg.s = ft_itoa_base(((uintmax_t)va_arg(args, long)), OCTAL, 8);
 	ret = ft_convert_format(args);
 	if (ret == 0)
 	{

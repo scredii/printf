@@ -6,7 +6,7 @@
 /*   By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/12 19:12:18 by abourgeu          #+#    #+#             */
-/*   Updated: 2017/03/02 23:25:42 by abourgeu         ###   ########.fr       */
+/*   Updated: 2017/03/08 16:57:39 by abourgeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ void		ft_resolve_dec(void)
 {
 	char	*tmp;
 
-	tmp = ft_strnew(1);
+	tmp = ft_strnew(100);
 	if (CONV == 'u' && g_sarg.width > 0 &&
 		ft_strchr(g_sarg.option, '0') != NULL)
 	{
 		tmp = ft_memset(tmp, '0', g_sarg.width - ft_strlen(g_sarg.s));
 		g_sarg.s = ft_strjoinfree(tmp, g_sarg.s, 0, 0);
-	}
-	if (g_sarg.width > 0 && ft_strchr(g_sarg.option, '0') != NULL
+		}
+	if (g_sarg.width > ft_strlen(g_sarg.s) && ft_strchr(g_sarg.option, '0') != NULL
 		&& CONV == 'd' && ft_strchr(g_sarg.option, '-') == NULL)
 		ft_resolve_zero(tmp);
 	if (ft_strchr(g_sarg.option, '#') != NULL && (CONV == 'O' ||

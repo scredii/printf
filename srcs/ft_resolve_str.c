@@ -6,7 +6,7 @@
 /*   By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 18:06:56 by abourgeu          #+#    #+#             */
-/*   Updated: 2017/03/07 13:24:16 by abourgeu         ###   ########.fr       */
+/*   Updated: 2017/03/08 16:54:26 by abourgeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void		ft_check_convers(va_list args)
 		ft_convert_u(args);
 	if (CONV == 'c' || CONV == 'C')
 		ft_convert_c(tmp, args);
-	free(tmp);
+	// free(tmp);
 }
 
 void 		ft_convert_p(va_list args)
@@ -85,13 +85,13 @@ void		ft_len_form(char *str, int i)
 	}
 }
 
-void		ft_double_percent(char *str, int i)
-{
-	i += 1;
-	while (str[i])
-	{
-		ft_putchar(str[i]);
-		g_sarg.val_ret += 1;
-		i++;
-	}
-}
+// void		ft_double_percent(char *str, int i)
+// {
+// 	i += 1;
+// 	while (str[i])
+// 	{
+// 		ft_putchar(str[i]);
+// 		g_sarg.val_ret += 1;
+// 		i++;
+// 	}
+// }

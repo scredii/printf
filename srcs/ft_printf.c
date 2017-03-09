@@ -6,7 +6,7 @@
 /*   By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/28 16:04:55 by abourgeu          #+#    #+#             */
-/*   Updated: 2017/03/06 14:56:56 by abourgeu         ###   ########.fr       */
+/*   Updated: 2017/03/08 17:12:57 by abourgeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 
 static int			ft_parse_width(char *str, int i)
 {
-	char	tmp[1000];
+	char	*tmp;
 	int		j;
 
 	j = 0;
+	tmp = ft_strnew(1);
 	while (str[i] != '.' && ft_strchr(CONVERS, str[i]) == 0 &&
 			ft_strchr(LENGTH, str[i]) == 0)
 	{
@@ -62,9 +63,9 @@ int			ft_parse_params(char *str, va_list args)
 			if (g_sarg.convers == '%')
 			{
 				ft_resolve_oneperc();
-				return (1);
+				j += 1;
 			}
-			if (ft_strchr(CONVERS, str[i]) == NULL)
+			if (ft_strchr(CONVERS, str[i]) == NULL && str[i] != '%')
 			{
 				ft_len_form(str, i);
 				i += g_sarg.len_form - 1;
@@ -122,8 +123,10 @@ int			ft_parse_printf(char *str)
 		if (str[i] == '%' && str[i + 1] != '%' && str[i + 1] != '\0')
 			return (0);
 		if (str[i] == '%' && str[i + 1] == '%')
+			return (0);
+		if (str[i] == '%' && str[i + 1] == '\0')
 		{
-			ft_double_percent(str, i);
+			ft_end_percent(str);
 			return (1);
 		}
 		if (str[i + 1] == '\0')
@@ -138,6 +141,30 @@ int			ft_parse_printf(char *str)
 	}
 	return (1);
 }
+void ft_clean(void)
+{
+	if(ft_strlen(g_sarg.option) > 1)
+		ft_strdel(&g_sarg.option);
+	if(ft_strlen(g_sarg.length) > 1)
+		ft_strdel(&g_sarg.length);
+	// if(g_sarg.s)
+	// 	ft_strdel(&g_sarg.s);
+	// if(g_sarg.print)
+	// 	ft_strdel(&g_sarg.print);
+}
+
+
+void		ft_end_percent(char *str)
+{
+	int		j;
+
+	j = -1;
+	while(++j < (int)ft_strlen(str) - 1)
+	{
+		write(1, &str[j], 1);
+		g_sarg.val_ret++;
+	}
+}
 
 int			ft_printf(const char *str, ...)
 {
@@ -145,12 +172,11 @@ int			ft_printf(const char *str, ...)
 	int		ret;
 
 	va_start(args, str);
-	// ft_bzero(g_sarg.s, ft_strlen(g_sarg.s));
-	// ft_bzero(g_sarg.print, ft_strlen(g_sarg.print));
 	g_sarg.val_ret = 0;
 	ret = ft_parse_printf((char*)str);
 	if (ret == 0)
 		ft_parse_params((char*)str, args);
 	va_end(args);
+	ft_clean();
 	return (g_sarg.val_ret);
 }

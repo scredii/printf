@@ -6,7 +6,7 @@
 /*   By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 17:56:09 by abourgeu          #+#    #+#             */
-/*   Updated: 2017/02/08 17:17:04 by abourgeu         ###   ########.fr       */
+/*   Updated: 2017/03/08 16:26:13 by abourgeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int			ft_parse_convers(char *str, int i)
 		}
 		if (str[i] == '%')
 		{
+			// if (str[i - 1] == '%')
+				// ft_resolve_oneperc();
 			g_sarg.convers = str[i];
 			return (1);
 		}
@@ -37,13 +39,19 @@ int			ft_parse_length(char *str, int i)
 	int		j;
 
 	j = 0;
-	g_sarg.length[0] = '\0';
-	g_sarg.length[1] = '\0';
+	if (g_sarg.length > 0)
+	{
+		free(g_sarg.length);
+		ft_bzero(g_sarg.length, ft_strlen(g_sarg.length));
+	}
+	g_sarg.length = ft_strnew(0);
 	while (ft_strchr(CONVERS, str[i]) == NULL)
 	{
 		while (ft_strchr(LENGTH, str[i]) != NULL)
 		{
 			g_sarg.length[j] = str[i];
+			if (ft_strchr(CONVERS, str[i]) != NULL)
+				break;
 			i++;
 			j++;
 		}
@@ -59,6 +67,7 @@ int			ft_get_option(char *str, int i)
 	int		j;
 
 	j = 0;
+	g_sarg.option = ft_strnew(1);
 	while (ft_strchr(OPT, str[i]) != NULL)
 	{
 		g_sarg.option[j] = str[i];

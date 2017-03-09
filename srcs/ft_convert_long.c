@@ -6,7 +6,7 @@
 /*   By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 13:57:13 by abourgeu          #+#    #+#             */
-/*   Updated: 2017/03/07 13:51:55 by abourgeu         ###   ########.fr       */
+/*   Updated: 2017/03/08 14:57:48 by abourgeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@ void ft_O(va_list args)
 {
 	if (ft_strchr(g_sarg.length, 'z') != NULL)
 		g_sarg.s = ft_itoa_base(((uintmax_t)va_arg(args, long)), OCTAL, 8);
+	if (ft_strchr(&g_sarg.length[0], 'h') != NULL &&
+			ft_strchr(&g_sarg.length[1], 'h') != NULL)
+	{
+		g_sarg.decimal = va_arg(args, int);
+		g_sarg.s = ft_ltoa((signed char)g_sarg.decimal);
+	}
 }
 
 int		ft_convert_format(va_list args)
@@ -47,7 +53,7 @@ int		ft_convert_format(va_list args)
 	{
 		ft_convert_o(args);
 		return (1);
-	}
+	}	
 	return (0 + ret);
 }
 
@@ -85,8 +91,16 @@ void ft_format_o(va_list args)
 		g_sarg.s = ft_itoa_base((uintmax_t)va_arg(args, unsigned long), OCTAL, 8);
 		return ;
 	}
+	if (ft_strchr(&g_sarg.length[0], 'h') != NULL &&
+			ft_strchr(&g_sarg.length[1], 'h') != NULL)
+	{
+		// g_sarg.decimal = (uintmax_t)va_arg(args,unsigned int);
+		g_sarg.s = ft_itoa_base(((uintmax_t)(unsigned char)va_arg(args, int)), OCTAL, 8);
+		return ;
+	}
 	else
-			g_sarg.decimal = va_arg(args, int);
+		g_sarg.s = ft_itoa_base((int)g_sarg.decimal, OCTAL, 8);
+		// g_sarg.decimal = va_arg(args, int);
 }
 
 void	ft_convert_o(va_list args)
@@ -102,6 +116,6 @@ void	ft_convert_o(va_list args)
 		g_sarg.s = "";
 		return ;
 	}
-	// g_sarg.s = ft_itoa_base((int)g_sarg.decimal, 8);
+	ft_resolve_dec();
 	return ;
 }

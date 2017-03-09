@@ -6,7 +6,7 @@
 /*   By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 18:59:57 by abourgeu          #+#    #+#             */
-/*   Updated: 2017/03/07 13:30:40 by abourgeu         ###   ########.fr       */
+/*   Updated: 2017/03/08 13:28:23 by abourgeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,13 @@ void		ft_convert_length_x(va_list args)
 	if (ft_strchr(&g_sarg.length[0], 'l') != NULL &&
 		ft_strchr(&g_sarg.length[1], 'l') != NULL)
 	{
-		// g_sarg.decimal = va_arg(args, long long);
 		g_sarg.s = ft_lltoa_base(va_arg(args, long long), 16);
 		return ;
 	}
 	if (ft_strchr(g_sarg.length, 'l') != NULL)
-	{
-		g_sarg.s = ft_ltoa_base(va_arg(args, long), 16);
-		return ;
-	}
+		g_sarg.s = ft_itoa_base(va_arg(args, long), HEXA, 16);
 	if (ft_strchr(g_sarg.length, 'h') != NULL)
-	{
 		g_sarg.decimal = va_arg(args, int);
-		return ;
-	}
 	if (ft_strchr(g_sarg.length, 'j') != NULL)
 		g_sarg.s = ft_imtoa_base(va_arg(args, uintmax_t), 16);
 	if (ft_strchr(g_sarg.length, 'z') != NULL)

@@ -6,7 +6,7 @@
 /*   By: abourgeu <abourgeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/28 16:05:18 by abourgeu          #+#    #+#             */
-/*   Updated: 2017/03/07 13:37:54 by abourgeu         ###   ########.fr       */
+/*   Updated: 2017/03/08 17:09:16 by abourgeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ typedef struct		s_args
 {
 	size_t		prec;
 	size_t		width;
-	char		length[1000];
-	char		option[50];
+	char		*length;
+	char		*option;
 	char		convers;
 	int			ret;
 	int			len_form;
@@ -46,6 +46,8 @@ typedef struct		s_args
 
 t_args				g_sarg;
 
+void				ft_clean(void);
+void				ft_end_percent(char *str);
 void 				ft_O(va_list args);
 void 				ft_convert_p(va_list args);
 int					ft_put_printf(void);
@@ -89,11 +91,12 @@ void				ft_bzero(void *s, size_t len);
 char				*ft_imtoa_base(uintmax_t value, uintmax_t base);
 int					ft_isdigit(int c);
 char				*ft_itoa_base(uintmax_t n, char *s, int base);
-char				*ft_itoa(int n);
+char				*ft_itoa(intmax_t n);
 char				*ft_lltoa_base(long long value, int base);
 char				*ft_ltoa(long n);
 void				ft_putstr(char const *s);
 void				ft_putnbr(int n);
+void				ft_strdel(char **as);
 char				*ft_strjoinfree(char *s1, char *s2, int free1, int free2);
 size_t				ft_strlen(const char *s);
 char				*ft_strnew(size_t size);
